@@ -1,0 +1,70 @@
+
+ 
+    .colonnesIon{
+        background-color:#c3975a;
+
+
+    }
+
+    #columns {
+        width: fit-content;
+        /* 200vw; */
+    }
+
+    #colWrapper{
+        width: 110vw;
+        overflow: auto; /* pour faire le scroll */
+        margin: auto;
+    }
+
+    
+    #colWrapper  #columns  .myrow   .colonnesIon {
+        
+        /*width: 10%;*/
+        /*width: 20vw;*/
+        padding: 0.5em;
+    }
+
+
+    .myrow{
+        display: flex;
+        flex-flow: row nowrap;
+    }
+
+    .separationColonnes{
+      /*  width: 20vw;
+        padding: 0.5em;*/
+        background-color:tomato;
+       
+    }
+
+    #countOrders{
+        width: 200em;
+    }
+
+
+    /*la div permet d'aligner les elemens du corps du tableau*/
+    .flexed {
+    
+        /*overflow: auto;*/
+        display: -webkit-flex;
+        flex-flow: row nowrap;
+        padding: 0.5em;
+
+        /*border: #0e0d0b 2px solid;*/
+
+       
+    }
+
+    .entetesTables{
+        width: 400px;
+       
+    }
+
+    /*correspondre ces  deux tailles */
+
+    .colonnes{
+        width: 400px;
+        border: #ff3e25 1px solid;
+        text-align: center;
+    }

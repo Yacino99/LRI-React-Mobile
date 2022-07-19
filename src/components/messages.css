@@ -1,0 +1,32 @@
+#messages { clear:both; margin: 5px 0; }
+.messages { list-style: none; margin: 10px 0; padding:0; }
+
+.messages li {
+	min-height: 17px !important;
+	margin-bottom: -1px !important;
+	padding: 5px 8px 4px 32px !important;
+	font-size: .95em !important;
+	font-weight: bold !important;
+}
+
+.messages li:first-letter {
+  text-transform: uppercase;
+}
+
+.success-msg {
+	border: 1px solid #95A486 !important;
+	color: #3D6611 !important;
+/*	background: #EFF5EA url(../../img/success_msg_icon.gif) no-repeat 10px 5px !important;*/
+}
+
+.warning-msg{
+	border:1px solid #666e73 !important;
+	/*background:#e6e6e6 url(../../img/warning_msg_icon.gif) no-repeat 10px 5px !important;*/
+	color:#000 !important
+}
+
+.error-msg{
+	border:1px solid #f16048 !important;
+	color:#df280a !important;
+	/*background:#faebe7 url(../../img/error_msg_icon.gif) no-repeat 10px 5px !important;*/
+}

@@ -1,0 +1,120 @@
+/* styles.css */
+
+/* Add styles here to customize the appearance of your app */
+
+
+@import url('messages.css');
+
+/*
+	ion-content {
+		--ion-background-color: #C3975A;
+
+		background-color:#C3975A;
+		font:12px/1.55 Arial,Helvetica,sans-serif;
+		color:#2f2f2f;
+	}
+
+	ion-page{
+		--ion-background-color: #C3975A;
+
+		background-color:#C3975A;
+		font:12px/1.55 Arial,Helvetica,sans-serif;
+		color:#2f2f2f;
+	}
+*/
+/*
+.boddy {
+	background-color:#C3975A;
+	font:12px/1.55 Arial,Helvetica,sans-serif;
+	color:#2f2f2f;
+}*/
+
+
+.box-form{
+	position: fixed; /* or absolute */
+	top: 50%;
+	left: 50%;
+	/* bring your own prefixes */
+	transform: translate(-50%, -50%);
+}
+
+* { margin: 0px; padding: 0px; }
+
+.form-control{
+	padding: 5px;
+	font-size: 17px;
+	border-width: 3px;
+	border-color: #CCCCCC;
+	background-color: #FFFFFF;
+	color: #000000;
+	border-style: solid;
+	border-radius: 18px;
+	box-shadow: 0px 0px 5px rgba(66,66,66,.75);
+	text-shadow: 0px 0px 5px rgba(66,66,66,.75);
+}
+
+legend {
+	margin: 2em 0;
+	font-size: 3em;
+	font-weight: bold;
+}
+
+.logo {
+	margin-left: 2em;
+	margin-bottom: 5em;
+
+}
+
+
+@media screen and (max-width: 576px) {
+	.logo {
+		margin-left: 0;
+		width: 100vw;
+	}
+}
+
+/* login form */
+#loginForm label,
+button {
+	font-weight: bold;
+	font-size: 1.5em;
+	color: #fff;
+	padding: 18px 75px;
+	margin-top: 20px;
+}
+
+.error {
+	text-align: center;
+	margin: 1em auto;
+}
+
+button.button {
+	background:#33515a;
+	border:0;
+	border-radius: 0.3em;
+	overflow:visible;
+	cursor:pointer;
+}
+
+
+.lesInput{
+	display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-content: center;
+	padding: 1vh;
+}
+
+
+.form-container {
+	margin: 30% auto;
+	display: table-cell;
+	vertical-align: middle;
+	width:500px;
+	text-align:center;
+
+  }
+
+.form-label{
+	padding: 1vh;
+}
