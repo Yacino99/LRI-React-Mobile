@@ -74,7 +74,7 @@ const loadData = async (getdate:any) => {
  
             
               <IonDatetime  placeholder='CHOISIR UNE DATE' displayFormat=" YYYY-MM-DD" onIonChange={(a) => setDate(a.detail.value)}>
-                <span slot="title">Select a Reservation Date</span>
+             
               </IonDatetime>
           </IonCard>
 
@@ -87,12 +87,8 @@ const loadData = async (getdate:any) => {
                     <IonLabel>
                         <h1>{Object.keys(data)[0]}</h1>
                     </IonLabel>
-                   
                 </IonItem>
-                
-
                 <IonItem  >
-             
                 <IonLabel>
                     <h1>{Object.values(data)}</h1>
                 </IonLabel>
