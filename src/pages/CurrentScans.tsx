@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import './Home.css';
 import { NavButtons } from '../components/NavButtons';
 import { calendarOutline, pin, walk, warning, wifi, wine } from 'ionicons/icons';
+import { Menu } from '../components/Menu';
 
 
 const CurrentScans: React.FC = () => {  
@@ -54,7 +55,8 @@ const loadData = async (getdate:any) => {
           </IonButtons>
         </IonToolbar>
       </IonHeader>
-      <IonContent fullscreen>
+      <IonContent fullscreen> 
+      
 
       <br /><br />
           <IonCard> 
@@ -93,9 +95,8 @@ const loadData = async (getdate:any) => {
                     <h1>{Object.values(data)}</h1>
                 </IonLabel>
             </IonItem>
-            </>
+          </>
             
-           
         }
         
         </IonList>

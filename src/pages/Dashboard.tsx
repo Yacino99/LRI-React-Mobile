@@ -8,6 +8,7 @@ import { LRITableHeaders } from '../components/LRITableHeaders';
 import { TableWrapper } from '../components/TableWrapper';
 
 import { LRItableCollectionBody } from '../components/LRItableCollectionBody';
+import { Menu } from '../components/Menu';
 
 
 const dash = [
@@ -2545,7 +2546,7 @@ const loadData = async (getdate:any) => {
           </IonButtons>
         </IonToolbar>
       </IonHeader>
-      <IonContent fullscreen>
+      <IonContent fullscreen> 
 
       <br />
       <IonHeader>TODAY'S DASHBOARD</IonHeader>

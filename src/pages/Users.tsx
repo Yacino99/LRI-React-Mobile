@@ -8,6 +8,7 @@ import classes from './tables.module.css';
 import { TableWrapper } from '../components/TableWrapper';
 import { LRItableCollectionBody } from '../components/LRItableCollectionBody';
 import { LRISingleTableRow } from '../components/LRISingleTableRow';
+import { Menu } from '../components/Menu';
 
 var baba = [
     {
@@ -708,7 +709,7 @@ const Users: React.FC = (props) => {
           </IonButtons>
         </IonToolbar>
       </IonHeader>
-      <IonContent fullscreen>
+      <IonContent fullscreen> 
 
       <p> Hello we are in the users aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa{/*loadData()*/} {console.log( lriUsers)} {console.log( data)}</p>
 

@@ -1,64 +1,85 @@
-import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonInput, IonItem, IonLabel, IonList, IonItemDivider, IonButton } from '@ionic/react';
+import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonInput, IonItem, IonLabel, IonList, IonItemDivider, IonButton, IonAlert, NavContext } from '@ionic/react';
 
-import React, { useState } from 'react';
-import { useHistory } from "react-router-dom";
+import React, { useCallback, useContext, useState } from 'react';
+import { Redirect, Route, useHistory } from "react-router-dom";
 import { allowedNodeEnvironmentFlags } from 'process';
 
 
 import './Login.css';
+import Home from '../pages/Home';
 
 export const Login: React.FC = (props) => {
 
   const [login, setLogin] = useState<string>();
   const [passwd, setPasswd] = useState<string>();
+  const [showAlert, setShowAlert] = useState(false);
+  const [isConnectionSuccessful, setIsConnectionSuccessful] = useState(false);
 
-  let history = useHistory();
+  const [isAuthed , setIsAuthed] = useState(false);
+
+  let message = "Bienvenue "+login;
+  //let history = useHistory();
+
+
+  const {navigate} = useContext(NavContext);
+
+  // Call this function when required to redirect with the back animation
+  const redirect = useCallback(
+    () => navigate('/home'),
+    [navigate]
+  );
 
   function accessWebsite(data:any){
     sessionStorage.setItem('api_token', data.api_token);
     sessionStorage.setItem('refresh_token', data.refresh_token);
 
-    history.push("/users");
+    setIsConnectionSuccessful(true);
 
-    alert('connected');
+    setIsAuthed(true);
+
+   
+    redirect();
+    window.location.reload();
+    alert('reloaded')
 
   }
 
 
   function handleError(err:any){
-    alert("Identifiants inccorects");
+    setShowAlert(true);
   }
 
   function handleSubmit(e:any){
 
-    e.preventDefault();
-    //e.stopPropagation();
-   // alert('prevent default')
+      e.preventDefault();
+      //e.stopPropagation();
+    // alert('prevent default')
 
-    fetch('http://127.0.0.1:8000/api/login', {
-    method: 'POST',
-  // mode : 'no-cors',
-    headers: {
-        'Content-Type': 'application/json' ,
-    },
-    body: JSON.stringify({
-        'login': login,
-        'password': passwd
-    }),
-    })
+      fetch('http://127.0.0.1:8000/api/login', {
+      method: 'POST',
+    // mode : 'no-cors',
+      headers: {
+          'Content-Type': 'application/json' ,
+      },
+      body: JSON.stringify({
+          'login': login,
+          'password': passwd
+      }),
+      })
 
 
-    .then((res) => res.json() )
-    .then((data) => accessWebsite(data))
-    .catch((err) => handleError(err)  /*alert('in error i guess') */);
+      .then((res) => res.json() )
+      .then((data) => accessWebsite(data))
+      .catch((err) => handleError(err)  /*alert('in error i guess') */);
 
   }
   var image =  "https://www.luxroutage.lu/wp-content/uploads/2022/06/Logo-LuxRoutage-new-entete-1.png";
-  var localImage = "./logo_LRI.png";
+  var localImage = "./img/logo_LRI.png";
+
+  
+  
+
   return (
-
-
-
     /*<IonPage>
 
       <IonContent >
@@ -91,6 +112,7 @@ export const Login: React.FC = (props) => {
       </div>
       </IonContent>
     </IonPage>*/
+
     <IonPage>
         <IonContent color="warning">
 
@@ -122,6 +144,25 @@ export const Login: React.FC = (props) => {
           </div>
 
         </div>
+
+        <IonAlert
+          isOpen={showAlert}
+          onDidDismiss={() => setShowAlert(false)}
+          header="Erreur de connexion"
+          subHeader="L'Authentification a echoué
+          Login ou Mot de passe incorrect"
+          message="Ou verifirez que vous etes bien connecté a internet"
+          buttons={['OK']}
+        />  
+
+        <IonAlert
+          isOpen={isConnectionSuccessful}
+          onDidDismiss={() => setIsConnectionSuccessful(false)}
+          header="Connextion Reussi !"
+          message={message}
+          buttons={['OK']}
+        />  
+
 
       </IonContent>
 

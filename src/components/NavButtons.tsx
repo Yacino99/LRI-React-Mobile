@@ -14,7 +14,7 @@ export const NavButtons = () => {
   }, []);
 
   // MediaQueryListEvent { isTrusted: true, media: "(min-width: 768px)", matches: true ...}
-  console.log(mQuery.matches);
+ // console.log(mQuery.matches);
 
   return (
     <div>
