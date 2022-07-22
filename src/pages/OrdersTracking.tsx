@@ -17,11 +17,14 @@ const OrdersTracking: React.FC = () => {
     const [selected, setSelected] = useState<string>("1");
     const [orderTrackingAverageData , setOrderTrackingAverageData] = useState([]);
     const [orderTrackingByDayData , setOrderTrackingByDayData] = useState([]);
+    const [orderTrackingExceptionData , setOrderTrackingExceptionData] = useState([]);
+
 
 
     useEffect( ()=>{
       //loadOrderTrackingAverageData();
       //loadOrderTrackingByDayData();
+      loadOrderTrackingExceptionData();
   } , [])
 
 
@@ -36,6 +39,12 @@ const OrdersTracking: React.FC = () => {
       await fetch('http://127.0.0.1:8000/api/order_tracking_by_day')
       .then(response => response.json())
       .then(recievedData => setOrderTrackingByDayData(recievedData));
+    }
+    
+    const loadOrderTrackingExceptionData = async () => {
+      await fetch('http://127.0.0.1:8000/api/order_tracking_average_details')
+      .then(response => response.json())
+      .then(recievedData => setOrderTrackingExceptionData(recievedData));
     }
 
     

@@ -1,4 +1,8 @@
+import { IonCol, IonGrid, IonRow } from '@ionic/react';
 import React from 'react';
+import { LRITableHeaders } from '../../components/LRITableHeaders';
+import { TableWrapper } from '../../components/TableWrapper';
+import classes from './../tables.module.css';
 
 var localData = {
   "AustrianPost": [
@@ -1067,22 +1071,142 @@ return (
   <div>
    
 
-    {
-      //data[0].length == 0 ? <IonLoading isOpen={true} ></IonLoading> : <pre> ok {console.log(data)} </pre> 
-    }
+        {
+        //data[0].length == 0 ? <IonLoading isOpen={true} ></IonLoading> : <pre> ok {console.log(data)} </pre> 
+        }
 
-    <p>BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB
-      BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB</p>
-  
+        
+        <TableWrapper title={''}>
+            {
+                /*
+                Object.keys(localData).map( (transporteurs , key) => {
+                    console.log( Object.values(localData)[key] )
+                return (
+                    <>
+                        <h1 key={key}>{transporteurs}</h1>
+                
+                        <IonGrid>
+                            <IonRow  className={classes.flexed}>
+                                <IonCol> <div className={classes.colonnes} > Pays </div> </IonCol>
+                                <IonCol> <div className={classes.colonnes}> Moyenne </div> </IonCol>
+                                <IonCol> <div className={classes.colonnes}> Total </div> </IonCol>
+                                <IonCol> <div className={classes.colonnes}> Commandes non Livrés </div> </IonCol>
+                                <IonCol> <div className={classes.colonnes}> Taux De Reussite </div> </IonCol>
+                                <IonCol> <div className={classes.colonnes}> J+1(%) </div> </IonCol>
+                                <IonCol> <div className={classes.colonnes}> J+2(%) </div> </IonCol>
+                                <IonCol> <div className={classes.colonnes} > J+3(%) </div> </IonCol>
+                                <IonCol> <div className={classes.colonnes}> J+4(%) </div> </IonCol>
+                                <IonCol> <div className={classes.colonnes}> J+5(%) </div> </IonCol>
+                                <IonCol> <div className={classes.colonnes}> J+6(%) </div> </IonCol>
+                                <IonCol> <div className={classes.colonnes}> J+7(%) </div> </IonCol>
+                                <IonCol> <div className={classes.colonnes}> J&gt;7(%) </div> </IonCol>
+                            </IonRow>
 
-    {
-      // TODO : faire les tableaux a partir des data que j'ai reçu comme dans LRI
-      
-    }
+                            <IonRow className={classes.flexed}>
 
+                            {
+                                Object.values(localData)[key].map( (item:any , key:any ) => {
+                                
+                                    return (
+                                        <>
+                                            <IonCol> <div className={classes.colonnes}> {item.delivery_country_iso} </div> </IonCol>
+                                            <IonCol> <div className={classes.colonnes}> {item.total_orders} </div> </IonCol>
+                                            <IonCol> <div className={classes.colonnes}> {item.total_orders} </div> </IonCol>
+                                            <IonCol> <div className={classes.colonnes}> {item.never_delivered} </div> </IonCol>
+                                            <IonCol> <div className={classes.colonnes}> {item.success_rate} </div> </IonCol>
+                                            <IonCol> <div className={classes.colonnes}> {item.j1} </div> </IonCol>
+                                            <IonCol> <div className={classes.colonnes}> {item.j2} </div> </IonCol>
+                                            <IonCol> <div className={classes.colonnes}> {item.j3} </div> </IonCol>
+                                            <IonCol> <div className={classes.colonnes}> {item.j4} </div> </IonCol>
+                                            <IonCol> <div className={classes.colonnes}> {item.j5} </div> </IonCol>
+                                            <IonCol> <div className={classes.colonnes}> {item.j6} </div> </IonCol>
+                                            <IonCol> <div className={classes.colonnes}> {item.j7} </div> </IonCol>
+
+                                        </>
+                                    )
+
+                                } )
+                            }
+
+                            </IonRow>
+                        </IonGrid>
+                
+                    </>
+                )
+
+            } )
+                */
+            }
+
+        </TableWrapper>
+        
+        <TableWrapper title={''} >
+        <IonGrid>
+        {
+            Object.values(localData).map( (objects:any , key : any) => {
+               
+                return (
+                        <div>
+                            <h1 key={key}>{objects[0].carrier_name}</h1>
+
+                          
+                                <IonRow  className={classes.flexed}>
+                                    <IonCol> <div className={classes.colonnes} > Pays </div> </IonCol>
+                                    <IonCol> <div className={classes.colonnes}> Moyenne </div> </IonCol>
+                                    <IonCol> <div className={classes.colonnes}> Total </div> </IonCol>
+                                    <IonCol> <div className={classes.colonnes}> Commandes non Livrés </div> </IonCol>
+                                    <IonCol> <div className={classes.colonnes}> Taux De Reussite </div> </IonCol>
+                                    <IonCol> <div className={classes.colonnes}> J+1(%) </div> </IonCol>
+                                    <IonCol> <div className={classes.colonnes}> J+2(%) </div> </IonCol>
+                                    <IonCol> <div className={classes.colonnes} > J+3(%) </div> </IonCol>
+                                    <IonCol> <div className={classes.colonnes}> J+4(%) </div> </IonCol>
+                                    <IonCol> <div className={classes.colonnes}> J+5(%) </div> </IonCol>
+                                    <IonCol> <div className={classes.colonnes}> J+6(%) </div> </IonCol>
+                                    <IonCol> <div className={classes.colonnes}> J+7(%) </div> </IonCol>
+                                    <IonCol> <div className={classes.colonnes}> J&gt;7(%) </div> </IonCol>
+                                </IonRow>
+                           
+                                {/*je map et each row possede ses colonnes*/}
+                              
+                              
+                                {
+                                    objects.map( (item:any,k:any) => {
+                                       
+                                        return (
+                                            <IonRow  className={classes.flexed} key={k}>
+                                                <IonCol> <div className={classes.colonnes}> {item.delivery_country_iso} </div> </IonCol>
+                                                <IonCol> <div className={classes.colonnes}> {item.averageDelivery} </div> </IonCol>
+                                                <IonCol> <div className={classes.colonnes}> {item.total_orders} </div> </IonCol>
+                                                <IonCol> <div className={classes.colonnes}> {item.never_delivered} </div> </IonCol>
+                                                <IonCol> <div className={classes.colonnes}> {item.success_rate} </div> </IonCol>
+                                                <IonCol> <div className={classes.colonnes}> {item.j1} </div> </IonCol>
+                                                <IonCol> <div className={classes.colonnes}> {item.j2} </div> </IonCol>
+                                                <IonCol> <div className={classes.colonnes}> {item.j3} </div> </IonCol>
+                                                <IonCol> <div className={classes.colonnes}> {item.j4} </div> </IonCol>
+                                                <IonCol> <div className={classes.colonnes}> {item.j5} </div> </IonCol>
+                                                <IonCol> <div className={classes.colonnes}> {item.j6} </div> </IonCol>
+                                                <IonCol> <div className={classes.colonnes}> {item.j7} </div> </IonCol>
+                                                <IonCol> <div className={classes.colonnes}> {item.jinfini} </div> </IonCol>
+                                            </IonRow>
+                                        )
+                                    } )
+                                }
+                               
+
+                        </div>
+
+                        
+                    )
+            })
+        }
+        </IonGrid>
+         </TableWrapper>
+
+
+            
 
     
-</div>
+    </div>
 );
 
 };

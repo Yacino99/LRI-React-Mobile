@@ -94,12 +94,13 @@ const OrderTrackingAverage: React.FC<Props> = ({data})  => {
         <IonGrid>
 
           <IonRow color='warning' className={classes.separationColonnes}>
-            <IonCol className="ion-align-self-start"> <div> ion-col start </div></IonCol>
-            <IonCol className="ion-align-self-end"><div>ion-col end</div></IonCol>
+            <IonCol className="ion-align-self-start"> <div> Transporteurs </div></IonCol>
+            <IonCol className="ion-align-self-end"><div>Delai moyen en (jours)</div></IonCol>
           </IonRow>
 
           
           {
+           
             localData.map( (item:any , key:any) => {
               return(
               <>
@@ -108,7 +109,7 @@ const OrderTrackingAverage: React.FC<Props> = ({data})  => {
               )
             } )
           }
-        
+         
 
         </IonGrid>
 

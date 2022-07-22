@@ -8,32 +8,12 @@ const OrdersTrackingException: React.FC = () => {
 
   return (
     
-    <IonPage>
-      <IonHeader>
-        <IonToolbar color="warning">
-          <IonTitle>Exception</IonTitle>
-          <IonButtons slot="end">
-          
-          </IonButtons>
-        </IonToolbar>
-      </IonHeader>
-      <IonContent fullscreen>
-     
-
-    {
-        /**
-         * TODO Next :
-         * statistiques transporteurs
-         * statistiques preparations de commandes
-         * 
-         */
-    }
+    <div>
+      
+        <h1>Exceptions comming soon ...</h1>
 
 
-    
-
-      </IonContent>
-    </IonPage>
+    </div>
   );
 };
 

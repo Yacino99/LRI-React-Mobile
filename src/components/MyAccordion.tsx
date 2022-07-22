@@ -10,24 +10,25 @@ interface Props{
 
 const MyAccordion: React.FC<Props> = ({transporteur,delai}) => {
  
+  // for more accordions , check this website :  https://alvarotrigo.com/blog/css-accordion/
+
   return (
     <>
-    
-    <ul>
-          <li>
-              <input type="checkbox" defaultChecked />
-                  <i></i>
-                  <IonRow >
-                     <IonCol className="ion-align-self-start"> <div> {transporteur} </div></IonCol>
-                     <IonCol className="ion-align-self-end"><div>{delai}</div></IonCol>
-                </IonRow>
-                  <div className="inSideAccordion">
-                     <div>coming soon ...</div>
-                  </div>
-                   
-                
-              </li>
-      </ul>
+      <ul>
+            <li>
+                <input type="checkbox" defaultChecked />
+                    <i></i>
+                    <IonRow >
+                      <IonCol className="ion-align-self-start"> <div> {transporteur} </div></IonCol>
+                      <IonCol className="ion-align-self-end"><div>{delai}</div></IonCol>
+                    </IonRow>
+                    <div className="inSideAccordion">
+                      <div>coming soon ...</div>
+                    </div>
+                    
+                  
+                </li>
+        </ul>
       </>
   );
 };
