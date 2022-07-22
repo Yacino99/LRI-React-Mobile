@@ -11,7 +11,7 @@ import {
 } from "@ionic/react";
 import React from "react";
 
-export const Menu = () => {
+export const Menu = () => { 
   return (
     <IonMenu side="end" contentId="main">
       <IonHeader>
@@ -35,6 +35,9 @@ export const Menu = () => {
             </IonItem>
             <IonItem button routerLink={"/current-scans"} routerDirection="none">
               <IonLabel>Current Scans</IonLabel>
+            </IonItem>
+            <IonItem button routerLink={"/orders_tracking"} routerDirection="none">
+              <IonLabel>Statistiques du suivi transporteurs</IonLabel>
             </IonItem>
           </IonMenuToggle>
         </IonList>

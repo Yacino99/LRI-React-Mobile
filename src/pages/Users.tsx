@@ -8,7 +8,7 @@ import classes from './tables.module.css';
 import { TableWrapper } from '../components/TableWrapper';
 import { LRItableCollectionBody } from '../components/LRItableCollectionBody';
 import { LRISingleTableRow } from '../components/LRISingleTableRow';
-import { Menu } from '../components/Menu';
+
 
 var baba = [
     {

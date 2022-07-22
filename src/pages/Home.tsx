@@ -1,10 +1,9 @@
-import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonButtons, IonGrid, IonRow, IonCol, IonAlert, IonButton } from '@ionic/react';
-import React, { useState } from 'react';
+import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonButtons, IonGrid, IonRow, IonCol, IonAlert, IonButton, IonItem, IonImg, IonLabel } from '@ionic/react';
+import React, { useEffect, useState } from 'react';
 import './Home.css';
 import { NavButtons } from '../components/NavButtons';
+import MyAccordion from '../components/MyAccordion';
 
-import classes from './tables.module.css';
-import { Menu } from '../components/Menu';
 
 
 
@@ -19,9 +18,7 @@ function json2array(json:any){
 
 const Home: React.FC = () => {
 
-
-    const [showAlert, setShowAlert] = useState(true);
-
+  
   return (
     
     <IonPage>
@@ -41,13 +38,14 @@ const Home: React.FC = () => {
          * TODO Next :
          * statistiques transporteurs
          * statistiques preparations de commandes
+         * 
          */
     }
 
+    <MyAccordion transporteur={"titi"} delai={"4"} />
 
-    
 
-      </IonContent>
+  </IonContent>
     </IonPage>
   );
 };

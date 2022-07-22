@@ -1,5 +1,5 @@
 import React from 'react';
-import { Redirect, Route, useLocation } from 'react-router-dom';
+import { Redirect, Route} from 'react-router-dom';
 import { IonApp, IonRouterOutlet } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
 import Home from './pages/Home';
@@ -27,6 +27,7 @@ import { Menu } from './components/Menu';
 import { Login } from './components/Login';
 import Dashboard from './pages/Dashboard';
 import CurrentScans from './pages/CurrentScans';
+import OrdersTracking from './pages/OrdersTracking';
 
 
 
@@ -37,13 +38,15 @@ const App: React.FC = (props) => (
   <IonApp>
     
     <IonReactRouter>
-     { window.location.pathname != '/login' ? <Menu/> : console.log(window.location.pathname )  }
+     { window.location.pathname != '/login' ? <Menu/> : console.log(window.location.pathname )  } 
       <IonRouterOutlet  id="main" >
         <Route path="/home" component={Home} exact={true} />
         <Route path="/login" component={Login} exact={true} />
         <Route path="/users" component={Users} exact={true} />
         <Route path="/current-scans" component={CurrentScans} exact={true} />
         <Route path="/dashboard" component={Dashboard} exact={true} />
+        <Route path="/orders_tracking" component={OrdersTracking} exact={true} />
+        
         <Route exact path="/" render={() => <Redirect to="/login" />} />
       </IonRouterOutlet>
     </IonReactRouter>

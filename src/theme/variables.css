@@ -133,6 +133,7 @@ http://ionicframework.com/docs/theming/ */
     --ion-color-dark-tint: #f5f6f9;
 
     --ion-color-medium: #989aa2;
+    /*--ion-color-medium: #c3975a;*/
     --ion-color-medium-rgb: 152,154,162;
     --ion-color-medium-contrast: #000000;
     --ion-color-medium-contrast-rgb: 0,0,0;

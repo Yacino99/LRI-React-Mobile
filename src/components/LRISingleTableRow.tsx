@@ -8,7 +8,6 @@ import classes from './../pages/tables.module.css';
 
 interface Props{
     data:any;
-    
  }
  
  

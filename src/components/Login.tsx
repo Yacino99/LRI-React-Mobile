@@ -75,6 +75,7 @@ export const Login: React.FC = (props) => {
   }
   var image =  "https://www.luxroutage.lu/wp-content/uploads/2022/06/Logo-LuxRoutage-new-entete-1.png";
   var localImage = "./img/logo_LRI.png";
+  var imageLri = "https://new.lri.systems/web/img/logo-LRI.png";
 
   
   
@@ -114,11 +115,11 @@ export const Login: React.FC = (props) => {
     </IonPage>*/
 
     <IonPage>
-        <IonContent color="warning">
+        <IonContent color="medium">
 
         <div className="bodyy">
 
-        <img src={image} title="logo" className="logo" />
+        <img src={imageLri} title="logo" className="logo" />
 
           <div className="box-form">
 
