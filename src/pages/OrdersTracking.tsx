@@ -18,13 +18,14 @@ const OrdersTracking: React.FC = () => {
     const [orderTrackingAverageData , setOrderTrackingAverageData] = useState([]);
     const [orderTrackingByDayData , setOrderTrackingByDayData] = useState([]);
     const [orderTrackingExceptionData , setOrderTrackingExceptionData] = useState([]);
-
+    const [orderTrackingDetailsData , setOrderTrackingData] = useState([]);
 
 
     useEffect( ()=>{
       //loadOrderTrackingAverageData();
       //loadOrderTrackingByDayData();
-      loadOrderTrackingExceptionData();
+      //loadOrderTrackingExceptionData();
+      //loadOrderTrackingDetailsData();
   } , [])
 
 
@@ -42,12 +43,18 @@ const OrdersTracking: React.FC = () => {
     }
     
     const loadOrderTrackingExceptionData = async () => {
-      await fetch('http://127.0.0.1:8000/api/order_tracking_average_details')
+      await fetch('http://127.0.0.1:8000/api/order_tracking_exception')
       .then(response => response.json())
       .then(recievedData => setOrderTrackingExceptionData(recievedData));
     }
 
-    
+    const loadOrderTrackingDetailsData = async () => {
+      await fetch('http://127.0.0.1:8000/api/order_tracking_average_details')
+      .then(response => response.json())
+      .then(recievedData => setOrderTrackingData(recievedData));
+    }
+
+    // todo monday : details on the accordion , exception cards 
     return (
 
         <IonPage>
@@ -88,7 +95,10 @@ const OrdersTracking: React.FC = () => {
         </IonList>
       
 
-        {selected == "1" ? <OrderTrackingAverage data={orderTrackingAverageData} /> : selected == "2" ? <OrderTrackingByDay data={[orderTrackingByDayData]} /> : selected == "3" ? <OrdersTrackingException /> : ''}
+        {
+          selected == "1" ? <OrderTrackingAverage data={orderTrackingAverageData} details={orderTrackingDetailsData}/> : selected == "2" ? 
+          <OrderTrackingByDay data={[orderTrackingByDayData]} /> : selected == "3" ? <OrdersTrackingException data={orderTrackingExceptionData} /> : ''
+        }
   
         </IonContent>
       </IonPage>

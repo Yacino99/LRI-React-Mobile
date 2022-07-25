@@ -6,9 +6,10 @@ import "./MyAccordion.css";
 interface Props{
     transporteur:any;
     delai:any;
+    details:any;
   }
 
-const MyAccordion: React.FC<Props> = ({transporteur,delai}) => {
+const MyAccordion: React.FC<Props> = ({transporteur,delai,details}) => { //ajouter un troisieme parametre et le nommer details
  
   // for more accordions , check this website :  https://alvarotrigo.com/blog/css-accordion/
 
@@ -23,7 +24,17 @@ const MyAccordion: React.FC<Props> = ({transporteur,delai}) => {
                       <IonCol className="ion-align-self-end"><div>{delai}</div></IonCol>
                     </IonRow>
                     <div className="inSideAccordion">
-                      <div>coming soon ...</div>
+                      {
+                        details.filter( (data:any) => { return data.carrier_name == transporteur } )
+                        .map( (row:any , key:any) => {
+                          return (
+                            <IonRow key={key}>
+                              <IonCol className="ion-align-self-start"> <div> {row.delivery_country_iso} </div></IonCol>
+                              <IonCol className="ion-align-self-end"><div>{row.averageDelivery}</div></IonCol>
+                            </IonRow>
+                          );
+                        } )
+                      }
                     </div>
                     
                   

@@ -42,7 +42,9 @@ const Home: React.FC = () => {
          */
     }
 
-    <MyAccordion transporteur={"titi"} delai={"4"} />
+    {
+      //<MyAccordion transporteur={"titi"} delai={"4"} />
+    }
 
 
   </IonContent>
