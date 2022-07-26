@@ -18,9 +18,7 @@ const CurrentScans: React.FC = () => {
   var formatedDate ; 
 
   function setDate(a:any){
-    
     formatedDate = a.slice(0,a.indexOf('T')) ;
-
     loadData(formatedDate)
   }
 

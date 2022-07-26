@@ -1,5 +1,5 @@
 //import { IonButtons, IonContent, IonHeader, IonPage, IonTitle, IonToolbar } from "@ionic/react";
-import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonList, IonRadioGroup, IonListHeader, IonLabel, IonItem, IonRadio, IonItemDivider, IonButtons } from '@ionic/react';
+import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonList, IonRadioGroup, IonListHeader, IonLabel, IonItem, IonRadio, IonItemDivider, IonButtons, IonGrid, IonRow, IonCol, IonDatetime, IonIcon, IonButton } from '@ionic/react';
 
 import React, { useEffect, useState } from "react";
 import { NavButtons } from '../components/NavButtons';
@@ -8,6 +8,9 @@ import { NavButtons } from '../components/NavButtons';
 import OrderTrackingAverage from './OrderTrackings/OrderTrackingAverage';
 import OrdersTrackingException from './OrderTrackings/OrderTrackingException';
 import OrderTrackingByDay from './OrderTrackings/OrderTrackingByDay';
+import DropdownMenuCustomers from '../components/DropdownMenuCustomers';
+import { DropdownMenuCarriers } from '../components/DropdownMenuCarriers';
+import { DropdownMenuCountries } from '../components/DropdownMenuCountries';
 
 
 
@@ -20,6 +23,15 @@ const OrdersTracking: React.FC = () => {
     const [orderTrackingExceptionData , setOrderTrackingExceptionData] = useState([]);
     const [orderTrackingDetailsData , setOrderTrackingData] = useState([]);
 
+    var dateFrom , dateTo;
+    function setDateFrom(a:any){
+      var formatedDate = a.slice(0,a.indexOf('T')) ;
+      dateFrom = formatedDate;
+    }
+    function setDateTo(a:any){
+      var formatedDate = a.slice(0,a.indexOf('T')) ;
+      dateTo = formatedDate;
+    }
 
     useEffect( ()=>{
       //loadOrderTrackingAverageData();
@@ -54,7 +66,7 @@ const OrdersTracking: React.FC = () => {
       .then(recievedData => setOrderTrackingData(recievedData));
     }
 
-    // todo monday : details on the accordion , exception cards 
+    
     return (
 
         <IonPage>
@@ -65,9 +77,28 @@ const OrdersTracking: React.FC = () => {
               <NavButtons/>
             </IonButtons>
           </IonToolbar>
+
+
         </IonHeader>
         <IonContent fullscreen>
-       
+        <DropdownMenuCustomers />
+          <DropdownMenuCarriers />
+          <DropdownMenuCountries />
+
+
+        <IonGrid>
+          <IonRow>
+            <IonCol>
+              <IonDatetime  placeholder='FROM' displayFormat=" YYYY-MM-DD" onIonChange={(e) => setDateFrom(e.detail.value)} />
+            </IonCol>
+            <IonCol>
+              <IonDatetime  placeholder='TO' displayFormat=" YYYY-MM-DD" onIonChange={(e) => setDateTo(e.detail.value)} />
+            </IonCol>
+            <IonCol>
+              <IonButton>Search</IonButton>
+            </IonCol>
+          </IonRow>
+        </IonGrid>
   
         
   
