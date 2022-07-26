@@ -61,10 +61,10 @@ export const Login: React.FC = (props) => {
       headers: {
           'Content-Type': 'application/json' ,
       },
-      body: JSON.stringify({
-          'login': login,
-          'password': passwd
-      }),
+        body: JSON.stringify({
+            'login': login,
+            'password': passwd
+        }),
       })
 
 

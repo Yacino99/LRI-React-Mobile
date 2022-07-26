@@ -4,6 +4,9 @@ import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonList, IonRadio
 import React, { useEffect, useState } from "react";
 import { NavButtons } from '../components/NavButtons';
 
+import { exportedCarriersValue } from '../components/DropdownMenuCarriers';
+import { exportedCountriesValue } from '../components/DropdownMenuCountries';
+import { exportedCustomerValue } from '../components/DropdownMenuCustomers';
 
 import OrderTrackingAverage from './OrderTrackings/OrderTrackingAverage';
 import OrdersTrackingException from './OrderTrackings/OrderTrackingException';
@@ -42,28 +45,93 @@ const OrdersTracking: React.FC = () => {
 
 
 
-    const loadOrderTrackingAverageData = async () => {
-      await fetch('http://127.0.0.1:8000/api/order_tracking_average')
+    const loadOrderTrackingAverageData = async (startDate:any,endDate:any,customersList:any,carriersList:any,countriesList:any) => {
+     /* await fetch('http://127.0.0.1:8000/api/order_tracking_average')
       .then(response => response.json())
-      .then(recievedData => setOrderTrackingAverageData(recievedData));
+      .then(recievedData => setOrderTrackingAverageData(recievedData));*/
+
+      await fetch('http://127.0.0.1:8000/api/order_tracking_average', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json' ,
+        },
+          body: JSON.stringify({
+              'filter_from_collect_date': startDate,
+              'filter_to_collect_date': endDate,
+              'customer_filer' : customersList,
+              'carrier_filer' : carriersList,
+              'country_filter' : countriesList
+          }),
+        })
+        .then(response => response.json())
+        .then(recievedData => setOrderTrackingExceptionData(recievedData));
     }
 
-    const loadOrderTrackingByDayData = async () => {
-      await fetch('http://127.0.0.1:8000/api/order_tracking_by_day')
+    const loadOrderTrackingByDayData = async (startDate:any,endDate:any,customersList:any,carriersList:any,countriesList:any) => {
+     /* await fetch('http://127.0.0.1:8000/api/order_tracking_by_day')
       .then(response => response.json())
-      .then(recievedData => setOrderTrackingByDayData(recievedData));
+      .then(recievedData => setOrderTrackingByDayData(recievedData));*/
+
+      await fetch('http://127.0.0.1:8000/api/order_tracking_by_day', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json' ,
+        },
+          body: JSON.stringify({
+              'filter_from_collect_date': startDate,
+              'filter_to_collect_date': endDate,
+              'customer_filer' : customersList,
+              'carrier_filer' : carriersList,
+              'country_filter' : countriesList
+          }),
+        })
+        .then(response => response.json())
+        .then(recievedData => setOrderTrackingExceptionData(recievedData));
     }
     
-    const loadOrderTrackingExceptionData = async () => {
-      await fetch('http://127.0.0.1:8000/api/order_tracking_exception')
+    const loadOrderTrackingExceptionData = async (startDate:any,endDate:any,customersList:any,carriersList:any,countriesList:any) => {
+    /*  await fetch('http://127.0.0.1:8000/api/order_tracking_exception')
       .then(response => response.json())
-      .then(recievedData => setOrderTrackingExceptionData(recievedData));
+      .then(recievedData => setOrderTrackingExceptionData(recievedData));*/
+
+     await fetch('http://127.0.0.1:8000/api/order_tracking_exception', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json' ,
+        },
+          body: JSON.stringify({
+              'filter_from_collect_date': startDate,
+              'filter_to_collect_date': endDate,
+              'customer_filer' : customersList,
+              'carrier_filer' : carriersList,
+              'country_filter' : countriesList
+          }),
+        })
+        .then(response => response.json())
+        .then(recievedData => setOrderTrackingExceptionData(recievedData));
+  
     }
 
-    const loadOrderTrackingDetailsData = async () => {
-      await fetch('http://127.0.0.1:8000/api/order_tracking_average_details')
+    const loadOrderTrackingDetailsData = async (startDate:any,endDate:any,customersList:any,carriersList:any,countriesList:any) => {
+      /*await fetch('http://127.0.0.1:8000/api/order_tracking_average_details')
       .then(response => response.json())
-      .then(recievedData => setOrderTrackingData(recievedData));
+      .then(recievedData => setOrderTrackingData(recievedData));*/
+
+      await fetch('http://127.0.0.1:8000/api/order_tracking_average_details', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json' ,
+        },
+          body: JSON.stringify({
+              'filter_from_collect_date': startDate,
+              'filter_to_collect_date': endDate,
+              'customer_filer' : customersList,
+              'carrier_filer' : carriersList,
+              'country_filter' : countriesList
+          }),
+        })
+        .then(response => response.json())
+        .then(recievedData => setOrderTrackingExceptionData(recievedData));
     }
 
     
@@ -81,7 +149,7 @@ const OrdersTracking: React.FC = () => {
 
         </IonHeader>
         <IonContent fullscreen>
-        <DropdownMenuCustomers />
+          <DropdownMenuCustomers />
           <DropdownMenuCarriers />
           <DropdownMenuCountries />
 

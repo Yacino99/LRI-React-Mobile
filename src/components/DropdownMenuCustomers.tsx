@@ -2,7 +2,7 @@ import { IonItem, IonList, IonSelect, IonSelectOption } from "@ionic/react";
 import React, { useState } from "react";
 import { brands } from "./data";
 
-export var exportedValue:any;
+export var exportedCustomerValue:any;
 
 const DropdownMenuCustomers: React.FC = ()  => {
 
@@ -10,7 +10,7 @@ const DropdownMenuCustomers: React.FC = ()  => {
 
     const setExportedValue = (v:any) => {
         setCurrentValue(v);
-        exportedValue = v ;
+        exportedCustomerValue = v ;
 
         //alert(exportedValue);
     }
