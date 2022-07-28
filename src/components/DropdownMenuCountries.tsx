@@ -26,7 +26,7 @@ export const DropdownMenuCountries: React.FC = ()  => {
                         {
                             countries.map( (country:any,key:any) => {
                                 return (
-                                    <IonSelectOption value={country.country_id}> {country.title_fr} </IonSelectOption>
+                                    <IonSelectOption value={country.iso}> {country.iso_name} </IonSelectOption>
                                 )
                             } )
                         }

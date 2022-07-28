@@ -1,4 +1,4 @@
-import { IonCol, IonGrid, IonRow } from '@ionic/react';
+import { IonCol, IonGrid, IonLoading, IonRow } from '@ionic/react';
 import React from 'react';
 import { LRITableHeaders } from '../../components/LRITableHeaders';
 import { TableWrapper } from '../../components/TableWrapper';
@@ -1143,11 +1143,12 @@ return (
         <TableWrapper title={''} >
         <IonGrid>
         {
-            Object.values(localData).map( (objects:any , key : any) => {
+           data.length != 0 ? 
+           Object.values(data).map( (objects:any , key : any) => {
                
                 return (
                         <div>
-                            <h1 key={key}>{objects[0].carrier_name}</h1>
+                            <h1 key={key}>{typeof objects[0].carrier_name  !== 'undefined' ? objects[0].carrier_name : '' }</h1>
 
                           
                                 <IonRow  className={classes.flexed}>
@@ -1174,19 +1175,19 @@ return (
                                        
                                         return (
                                             <IonRow  className={classes.flexed} key={k}>
-                                                <IonCol> <div className={classes.colonnes}> {item.delivery_country_iso} </div> </IonCol>
-                                                <IonCol> <div className={classes.colonnes}> {item.averageDelivery} </div> </IonCol>
-                                                <IonCol> <div className={classes.colonnes}> {item.total_orders} </div> </IonCol>
-                                                <IonCol> <div className={classes.colonnes}> {item.never_delivered} </div> </IonCol>
-                                                <IonCol> <div className={classes.colonnes}> {item.success_rate} </div> </IonCol>
-                                                <IonCol> <div className={classes.colonnes}> {item.j1} </div> </IonCol>
-                                                <IonCol> <div className={classes.colonnes}> {item.j2} </div> </IonCol>
-                                                <IonCol> <div className={classes.colonnes}> {item.j3} </div> </IonCol>
-                                                <IonCol> <div className={classes.colonnes}> {item.j4} </div> </IonCol>
-                                                <IonCol> <div className={classes.colonnes}> {item.j5} </div> </IonCol>
-                                                <IonCol> <div className={classes.colonnes}> {item.j6} </div> </IonCol>
-                                                <IonCol> <div className={classes.colonnes}> {item.j7} </div> </IonCol>
-                                                <IonCol> <div className={classes.colonnes}> {item.jinfini} </div> </IonCol>
+                                                <IonCol> <div className={classes.colonnes}> {typeof item.delivery_country_iso !== 'undefined' ? item.delivery_country_iso: '' } </div> </IonCol>
+                                                <IonCol> <div className={classes.colonnes}> {typeof item.averageDelivery !== 'undefined' ? item.averageDelivery :''} </div> </IonCol>
+                                                <IonCol> <div className={classes.colonnes}> {typeof item.total_orders !== 'undefined' ? item.total_orders :''} </div> </IonCol>
+                                                <IonCol> <div className={classes.colonnes}> {typeof item.never_delivered !== 'undefined' ? item.never_delivered :''} </div> </IonCol>
+                                                <IonCol> <div className={classes.colonnes}> {typeof item.success_rate !== 'undefined' ? item.success_rate :''} </div> </IonCol>
+                                                <IonCol> <div className={classes.colonnes}> {typeof item.j1 !== 'undefined' ? item.j1 :''} </div> </IonCol>
+                                                <IonCol> <div className={classes.colonnes}> {typeof item.j2 !== 'undefined' ? item.j2 :''} </div> </IonCol>
+                                                <IonCol> <div className={classes.colonnes}> {typeof item.j3 !== 'undefined' ? item.j3 :'' } </div> </IonCol>
+                                                <IonCol> <div className={classes.colonnes}> {typeof item.j4 !== 'undefined' ? item.j4 :''} </div> </IonCol>
+                                                <IonCol> <div className={classes.colonnes}> {typeof item.j5 !== 'undefined' ? item.j5 :''} </div> </IonCol>
+                                                <IonCol> <div className={classes.colonnes}> {typeof item.j6 !== 'undefined' ? item.j6 :''} </div> </IonCol>
+                                                <IonCol> <div className={classes.colonnes}> {typeof item.j7 !== 'undefined' ? item.j7 :''} </div> </IonCol>
+                                                <IonCol> <div className={classes.colonnes}> {typeof item.jinfini !== 'undefined' ? item.jinfini: ''}  </div> </IonCol>
                                             </IonRow>
                                         )
                                     } )
@@ -1197,7 +1198,10 @@ return (
 
                         
                     )
-            })
+            }) //:   <IonLoading isOpen={true} ></IonLoading>  
+                : <p>loading ...</p>
+               
+       
         }
         </IonGrid>
          </TableWrapper>

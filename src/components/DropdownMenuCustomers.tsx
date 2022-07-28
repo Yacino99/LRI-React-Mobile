@@ -10,7 +10,11 @@ const DropdownMenuCustomers: React.FC = ()  => {
 
     const setExportedValue = (v:any) => {
         setCurrentValue(v);
-        exportedCustomerValue = v ;
+
+        if(v.length > 20){
+            exportedCustomerValue = v.substring(0, v.length - 1);
+        }else
+            exportedCustomerValue = v ;
 
         //alert(exportedValue);
     }

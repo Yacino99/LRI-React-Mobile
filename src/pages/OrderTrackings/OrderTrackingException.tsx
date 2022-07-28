@@ -1,4 +1,4 @@
-import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonButtons} from '@ionic/react';
+import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonButtons, IonLoading} from '@ionic/react';
 import React, { useEffect, useState } from 'react';
 import ExceptionCard from '../../components/ExceptionCard';
 
@@ -2191,7 +2191,8 @@ const OrdersTrackingException: React.FC<Props> = ({data}) => {
         //console.log( Object.values(dataAsArray) , "coucou" )
 
                 
-        Object.entries(localData).map( (entry:any) => {
+        data.length != 0 ?
+         Object.entries(data).map( (entry:any) => {
           const [key, value] = entry;
           //console.log(value,"toto")
           return (
@@ -2201,7 +2202,9 @@ const OrdersTrackingException: React.FC<Props> = ({data}) => {
               <ExceptionCard data={value} ></ExceptionCard>
             </>
           )
-        })
+        }) //:  <IonLoading isOpen={true} ></IonLoading> 
+           : <p>loading ...</p>
+   
       }
 
     </>

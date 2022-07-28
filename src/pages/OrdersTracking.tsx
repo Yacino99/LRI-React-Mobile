@@ -1,5 +1,5 @@
 //import { IonButtons, IonContent, IonHeader, IonPage, IonTitle, IonToolbar } from "@ionic/react";
-import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonList, IonRadioGroup, IonListHeader, IonLabel, IonItem, IonRadio, IonItemDivider, IonButtons, IonGrid, IonRow, IonCol, IonDatetime, IonIcon, IonButton } from '@ionic/react';
+import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonList, IonRadioGroup, IonListHeader, IonLabel, IonItem, IonRadio, IonItemDivider, IonButtons, IonGrid, IonRow, IonCol, IonDatetime, IonIcon, IonButton, IonLoading } from '@ionic/react';
 
 import React, { useEffect, useState } from "react";
 import { NavButtons } from '../components/NavButtons';
@@ -15,6 +15,7 @@ import DropdownMenuCustomers from '../components/DropdownMenuCustomers';
 import { DropdownMenuCarriers } from '../components/DropdownMenuCarriers';
 import { DropdownMenuCountries } from '../components/DropdownMenuCountries';
 
+import { brands_id } from "../components/data";
 
 
 const OrdersTracking: React.FC = () => {
@@ -24,9 +25,9 @@ const OrdersTracking: React.FC = () => {
     const [orderTrackingAverageData , setOrderTrackingAverageData] = useState([]);
     const [orderTrackingByDayData , setOrderTrackingByDayData] = useState([]);
     const [orderTrackingExceptionData , setOrderTrackingExceptionData] = useState([]);
-    const [orderTrackingDetailsData , setOrderTrackingData] = useState([]);
+    const [orderTrackingDetailsData , setOrderTrackingDetailsData] = useState([]);
 
-    var dateFrom , dateTo;
+    var dateFrom: any , dateTo: any;
     function setDateFrom(a:any){
       var formatedDate = a.slice(0,a.indexOf('T')) ;
       dateFrom = formatedDate;
@@ -37,10 +38,10 @@ const OrdersTracking: React.FC = () => {
     }
 
     useEffect( ()=>{
-      //loadOrderTrackingAverageData();
-      //loadOrderTrackingByDayData();
-      //loadOrderTrackingExceptionData();
-      //loadOrderTrackingDetailsData();
+      loadOrderTrackingDetailsData("2021-07-01","2022-03-01",brands_id,"","");
+      loadOrderTrackingAverageData("2021-07-01","2022-03-01",brands_id,"","");
+      loadOrderTrackingByDayData("2021-07-01","2022-03-01",brands_id,"","");
+      loadOrderTrackingExceptionData("2021-07-01","2022-03-01",brands_id,"","");
   } , [])
 
 
@@ -55,16 +56,17 @@ const OrdersTracking: React.FC = () => {
         headers: {
             'Content-Type': 'application/json' ,
         },
-          body: JSON.stringify({
-              'filter_from_collect_date': startDate,
-              'filter_to_collect_date': endDate,
-              'customer_filer' : customersList,
-              'carrier_filer' : carriersList,
-              'country_filter' : countriesList
-          }),
+        body: JSON.stringify({
+          'filter_from_collect_date': startDate,
+          'filter_to_collect_date': endDate,
+          'filter_carrier_id' : carriersList,
+          'filter_iso_id' : countriesList,
+          'filter_customer_brand' : customersList 
+         
+      }),
         })
         .then(response => response.json())
-        .then(recievedData => setOrderTrackingExceptionData(recievedData));
+        .then(recievedData => setOrderTrackingAverageData(recievedData));
     }
 
     const loadOrderTrackingByDayData = async (startDate:any,endDate:any,customersList:any,carriersList:any,countriesList:any) => {
@@ -77,16 +79,17 @@ const OrdersTracking: React.FC = () => {
         headers: {
             'Content-Type': 'application/json' ,
         },
-          body: JSON.stringify({
-              'filter_from_collect_date': startDate,
-              'filter_to_collect_date': endDate,
-              'customer_filer' : customersList,
-              'carrier_filer' : carriersList,
-              'country_filter' : countriesList
-          }),
+        body: JSON.stringify({
+          'filter_from_collect_date': startDate,
+          'filter_to_collect_date': endDate,
+          'filter_carrier_id' : carriersList,
+          'filter_iso_id' : countriesList,
+          'filter_customer_brand' : customersList 
+         
+      }),
         })
         .then(response => response.json())
-        .then(recievedData => setOrderTrackingExceptionData(recievedData));
+        .then(recievedData => setOrderTrackingByDayData(recievedData));
     }
     
     const loadOrderTrackingExceptionData = async (startDate:any,endDate:any,customersList:any,carriersList:any,countriesList:any) => {
@@ -99,13 +102,13 @@ const OrdersTracking: React.FC = () => {
         headers: {
             'Content-Type': 'application/json' ,
         },
-          body: JSON.stringify({
-              'filter_from_collect_date': startDate,
-              'filter_to_collect_date': endDate,
-              'customer_filer' : customersList,
-              'carrier_filer' : carriersList,
-              'country_filter' : countriesList
-          }),
+        body: JSON.stringify({
+          'filter_from_collect_date': startDate,
+          'filter_to_collect_date': endDate,
+          'filter_carrier_id' : carriersList,
+          'filter_iso_id' : countriesList,
+          'filter_customer_brand' : customersList 
+      }),
         })
         .then(response => response.json())
         .then(recievedData => setOrderTrackingExceptionData(recievedData));
@@ -125,15 +128,22 @@ const OrdersTracking: React.FC = () => {
           body: JSON.stringify({
               'filter_from_collect_date': startDate,
               'filter_to_collect_date': endDate,
-              'customer_filer' : customersList,
-              'carrier_filer' : carriersList,
-              'country_filter' : countriesList
+              'filter_carrier_id' : carriersList,
+              'filter_iso_id' : countriesList,
+              'filter_customer_brand' : customersList 
+             
           }),
         })
         .then(response => response.json())
-        .then(recievedData => setOrderTrackingExceptionData(recievedData));
+        .then(recievedData => setOrderTrackingDetailsData(recievedData));
     }
 
+    const getFetchedData = () => {
+      loadOrderTrackingDetailsData(dateFrom,dateTo,exportedCustomerValue,exportedCarriersValue,exportedCountriesValue);
+      loadOrderTrackingAverageData(dateFrom,dateTo,exportedCustomerValue,exportedCarriersValue,exportedCountriesValue);
+      loadOrderTrackingByDayData(dateFrom,dateTo,exportedCustomerValue,exportedCarriersValue,exportedCountriesValue);
+      loadOrderTrackingExceptionData(dateFrom,dateTo,exportedCustomerValue,exportedCarriersValue,exportedCountriesValue);
+    }
     
     return (
 
@@ -163,7 +173,7 @@ const OrdersTracking: React.FC = () => {
               <IonDatetime  placeholder='TO' displayFormat=" YYYY-MM-DD" onIonChange={(e) => setDateTo(e.detail.value)} />
             </IonCol>
             <IonCol>
-              <IonButton>Search</IonButton>
+              <IonButton onClick={() => getFetchedData()}>Search</IonButton>
             </IonCol>
           </IonRow>
         </IonGrid>
@@ -195,8 +205,12 @@ const OrdersTracking: React.FC = () => {
       
 
         {
-          selected == "1" ? <OrderTrackingAverage data={orderTrackingAverageData} details={orderTrackingDetailsData}/> : selected == "2" ? 
-          <OrderTrackingByDay data={[orderTrackingByDayData]} /> : selected == "3" ? <OrdersTrackingException data={orderTrackingExceptionData} /> : ''
+          orderTrackingAverageData.length <= 0 ||  orderTrackingByDayData.length <= 0 || orderTrackingExceptionData.length <= 0  ? <IonLoading isOpen={true} ></IonLoading>
+          : 
+          (
+            selected == "1" ? <OrderTrackingAverage data={orderTrackingAverageData} details={orderTrackingDetailsData}/> : selected == "2" ? 
+            <OrderTrackingByDay data={[orderTrackingByDayData]} /> : selected == "3" ? <OrdersTrackingException data={orderTrackingExceptionData} /> : ''
+          )
         }
   
         </IonContent>
@@ -205,3 +219,4 @@ const OrdersTracking: React.FC = () => {
 };
 
 export default OrdersTracking;
+

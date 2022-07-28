@@ -40,6 +40,8 @@ const Home: React.FC = () => {
          * statistiques preparations de commandes
          * 
          */
+
+         //typeof variable !== 'undefined' ? 'oui' : 'non'
     }
 
     {
