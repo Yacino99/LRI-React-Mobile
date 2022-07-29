@@ -38,10 +38,10 @@ const OrdersTracking: React.FC = () => {
     }
 
     useEffect( ()=>{
-      loadOrderTrackingDetailsData("2021-07-01","2022-03-01",brands_id,"","");
-      loadOrderTrackingAverageData("2021-07-01","2022-03-01",brands_id,"","");
-      loadOrderTrackingByDayData("2021-07-01","2022-03-01",brands_id,"","");
-      loadOrderTrackingExceptionData("2021-07-01","2022-03-01",brands_id,"","");
+     // loadOrderTrackingDetailsData("2021-07-01","2022-03-01",brands_id,"","");
+     // loadOrderTrackingAverageData("2021-07-01","2022-03-01",brands_id,"","");
+     // loadOrderTrackingByDayData("2021-07-01","2022-03-01",brands_id,"","");
+     // loadOrderTrackingExceptionData("2021-07-01","2022-03-01",brands_id,"","");
   } , [])
 
 
@@ -205,8 +205,8 @@ const OrdersTracking: React.FC = () => {
       
 
         {
-          orderTrackingAverageData.length <= 0 ||  orderTrackingByDayData.length <= 0 || orderTrackingExceptionData.length <= 0  ? <IonLoading isOpen={true} ></IonLoading>
-          : 
+         // orderTrackingAverageData.length <= 0 ||  orderTrackingByDayData.length <= 0 || orderTrackingExceptionData.length <= 0  ? <IonLoading isOpen={true} ></IonLoading>
+         // : 
           (
             selected == "1" ? <OrderTrackingAverage data={orderTrackingAverageData} details={orderTrackingDetailsData}/> : selected == "2" ? 
             <OrderTrackingByDay data={[orderTrackingByDayData]} /> : selected == "3" ? <OrdersTrackingException data={orderTrackingExceptionData} /> : ''

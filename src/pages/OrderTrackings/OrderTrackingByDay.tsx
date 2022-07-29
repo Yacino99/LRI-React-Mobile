@@ -1148,7 +1148,7 @@ return (
                
                 return (
                         <div>
-                            <h1 key={key}>{typeof objects[0].carrier_name  !== 'undefined' ? objects[0].carrier_name : '' }</h1>
+                            <h1 key={key}>{typeof objects[0]["carrier_name"]  !== 'undefined' ? objects[0]["carrier_name"] : '' }</h1>
 
                           
                                 <IonRow  className={classes.flexed}>

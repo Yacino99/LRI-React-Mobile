@@ -39,6 +39,9 @@ export const Menu = () => {
             <IonItem button routerLink={"/orders_tracking"} routerDirection="none">
               <IonLabel>Statistiques du suivi transporteurs</IonLabel>
             </IonItem>
+            <IonItem button routerLink={"/user-stat"} routerDirection="none">
+              <IonLabel>Statistiques Utilisateurs</IonLabel>
+            </IonItem>
           </IonMenuToggle>
         </IonList>
       </IonContent>
