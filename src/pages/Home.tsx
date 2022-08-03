@@ -2,56 +2,68 @@ import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonButtons, IonGr
 import React, { useEffect, useState } from 'react';
 import './Home.css';
 import { NavButtons } from '../components/NavButtons';
-import MyAccordion from '../components/MyAccordion';
 
 
+import { Chart as ChartJS, registerables } from 'chart.js';
+import { Bar } from "react-chartjs-2";
+ChartJS.register(...registerables);
 
-
-function json2array(json:any){
-  var result:any = [];
-  var keys = Object.keys(json);
-  keys.forEach(function(key){
-      result.push(json[key]);
-  });
-  return result;
-}
+const data = {
+  labels: ['Janvier' , 'fevrier' , 'mars' , 'avril' , 'mai','juin','juillet','aout'],
+  datasets : [
+    {
+      label: 'My first Data Set',
+      backgroundColor: 'rgba(255,99,132,0.2)',
+      borderColor: 'rgba(255,99,132,1)',
+      borderWidth: 1 ,
+      hoverBackgroundColor : 'rgba(255,99,132,0.4)',
+      hoverBorderColor : 'rgba(255,99,132,1)',
+      data: [65,59,80,81,56,55,41,10]
+    }
+  ]
+};
 
 const Home: React.FC = () => {
 
   
   return (
     
+
     <IonPage>
-      <IonHeader>
-        <IonToolbar color="warning">
-          <IonTitle>HOME</IonTitle>
-          <IonButtons slot="end">
-            <NavButtons/>
-          </IonButtons>
-        </IonToolbar>
-      </IonHeader>
-      <IonContent fullscreen>
-     
-
-    {
-        /**
-         * TODO Next :
-         * statistiques transporteurs
-         * statistiques preparations de commandes
-         * 
-         */
-
-         //typeof variable !== 'undefined' ? 'oui' : 'non'
-    }
-
-    {
-      //<MyAccordion transporteur={"titi"} delai={"4"} />
-    }
+    <IonHeader>
+      <IonToolbar color="warning">
+        <IonTitle>HOME</IonTitle>
+        <IonButtons slot="end">
+          <NavButtons/>
+        </IonButtons>
+      </IonToolbar>
+    </IonHeader>
+    <IonContent fullscreen>
 
 
-  </IonContent>
-    </IonPage>
+
+      <div>
+        <h2>Bar Example ( custom size )</h2>
+        <Bar
+          data={data}
+          width={80}
+          height={100}
+          options={{maintainAspectRatio:true}} 
+          /> 
+
+        <Bar
+          data={data}
+          width={80}
+          height={100}
+          options={{maintainAspectRatio:true}} 
+          /> 
+      </div>
+
+    </IonContent>
+  </IonPage>
+   
   );
 };
 
 export default Home;
+
