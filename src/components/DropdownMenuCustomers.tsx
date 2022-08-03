@@ -16,7 +16,7 @@ const DropdownMenuCustomers: React.FC = ()  => {
         }else
             exportedCustomerValue = v ;
 
-        //alert(exportedValue);
+        alert(exportedCustomerValue);
     }
 
     const getAllBrands = () => {

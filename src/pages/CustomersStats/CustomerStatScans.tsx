@@ -8,12 +8,12 @@ import { TableWrapper } from "../../components/TableWrapper";
 import classes from './../tables.module.css';
 
 interface Props{
-    data:any;
+    data:Array<any>;
   }
   
   
 
-const UsersStatScans : React.FC<Props> = ({data}) => {  
+const CustomerStatScans : React.FC<Props> = ({data}) => {  
 
     return (
         <>
@@ -41,7 +41,7 @@ const UsersStatScans : React.FC<Props> = ({data}) => {
        
 
             {
-                customerStatScan.map( (object:any,key:any) => {
+                data.map( (object:any,key:any) => {
                    return (
                     <>
                      <IonRow className={classes.flexed}>
@@ -71,4 +71,4 @@ const UsersStatScans : React.FC<Props> = ({data}) => {
     )
 }
 
-export default UsersStatScans;
+export default CustomerStatScans;

@@ -20,6 +20,7 @@ import { brands_id } from "../components/data";
 
 const OrdersTracking: React.FC = () => {
 
+    const token:any= sessionStorage.getItem('x-api-token');
     
     const [selected, setSelected] = useState<string>("1");
     const [orderTrackingAverageData , setOrderTrackingAverageData] = useState([]);
@@ -54,7 +55,7 @@ const OrdersTracking: React.FC = () => {
       await fetch('http://127.0.0.1:8000/api/order_tracking_average', {
         method: 'POST',
         headers: {
-            'Content-Type': 'application/json' ,
+            'Content-Type': 'application/json' ,  'x-api-token' : token
         },
         body: JSON.stringify({
           'filter_from_collect_date': startDate,
@@ -77,7 +78,7 @@ const OrdersTracking: React.FC = () => {
       await fetch('http://127.0.0.1:8000/api/order_tracking_by_day', {
         method: 'POST',
         headers: {
-            'Content-Type': 'application/json' ,
+            'Content-Type': 'application/json' ,'x-api-token' : token
         },
         body: JSON.stringify({
           'filter_from_collect_date': startDate,
@@ -100,7 +101,7 @@ const OrdersTracking: React.FC = () => {
      await fetch('http://127.0.0.1:8000/api/order_tracking_exception', {
         method: 'POST',
         headers: {
-            'Content-Type': 'application/json' ,
+            'Content-Type': 'application/json' ,'x-api-token' : token
         },
         body: JSON.stringify({
           'filter_from_collect_date': startDate,
@@ -123,7 +124,7 @@ const OrdersTracking: React.FC = () => {
       await fetch('http://127.0.0.1:8000/api/order_tracking_average_details', {
         method: 'POST',
         headers: {
-            'Content-Type': 'application/json' ,
+            'Content-Type': 'application/json' ,'x-api-token' : token
         },
           body: JSON.stringify({
               'filter_from_collect_date': startDate,

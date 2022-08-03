@@ -11,7 +11,7 @@ interface Props{
   
   
 
- const UsersStatActivities : React.FC<Props> = ({data}) => {  
+ const CustomerStatActivities : React.FC<Props> = ({data}) => {  
 
     return (
         <>
@@ -31,7 +31,7 @@ interface Props{
                    
 
                         {
-                            CustomerStatActivites.map( (object:any,key:any) => {
+                            data.map( (object:any,key:any) => {
                                return (
                                 <>
                                  <IonRow className={classes.flexed}>
@@ -55,4 +55,4 @@ interface Props{
     )
 }
 
-export default UsersStatActivities;
+export default CustomerStatActivities;
