@@ -36,11 +36,14 @@ export const Menu = () => {
             <IonItem button routerLink={"/current-scans"} routerDirection="none">
               <IonLabel>Current Scans</IonLabel>
             </IonItem>
-            <IonItem button routerLink={"/orders_tracking"} routerDirection="none">
+            <IonItem button routerLink={"/orders_tracking"} routerDirection="none"> 
               <IonLabel>Statistiques du suivi de Commandes</IonLabel>
             </IonItem>
             <IonItem button routerLink={"/customer-stat"} routerDirection="none">
               <IonLabel>Statistiques Clients</IonLabel>
+            </IonItem>
+            <IonItem button routerLink={"/orders-preparation"} routerDirection="none">
+              <IonLabel>Statistique de préparation des commandes</IonLabel>
             </IonItem>
           </IonMenuToggle>
         </IonList>

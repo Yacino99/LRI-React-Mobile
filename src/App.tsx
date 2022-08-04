@@ -29,6 +29,7 @@ import Dashboard from './pages/Dashboard';
 import CurrentScans from './pages/CurrentScans';
 import OrdersTracking from './pages/OrdersTracking';
 import CustomerStat from './pages/CustomerStat';
+import { OrdersPreparation } from './pages/OrdersPreparation';
 
 
 
@@ -48,6 +49,8 @@ const App: React.FC = (props) => (
         <Route path="/dashboard" component={Dashboard} exact={true} />
         <Route path="/orders_tracking" component={OrdersTracking} exact={true} />
         <Route path="/customer-stat" component={CustomerStat} exact={true} />
+        <Route path="/orders-preparation" component={OrdersPreparation} exact={true} />
+
         
         <Route exact path="/" render={() => <Redirect to="/login" />} />
       </IonRouterOutlet>

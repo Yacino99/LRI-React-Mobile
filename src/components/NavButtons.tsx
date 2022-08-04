@@ -28,6 +28,8 @@ export const NavButtons = () => {
           <IonButton routerLink={"/current-scans"}>Current Scans</IonButton>
           <IonButton routerLink={"/orders_tracking"}>Statistiques du suivi de Commandes</IonButton>
           <IonButton routerLink={"/customer-stat"}>Statistiques Clients</IonButton>
+          <IonButton routerLink={"/orders-preparation"}>Statistique de préparation des commandes</IonButton>
+
         </>
       )}
     </div>

@@ -28,6 +28,7 @@ const OrdersTracking: React.FC = () => {
     const [orderTrackingExceptionData , setOrderTrackingExceptionData] = useState([]);
     const [orderTrackingDetailsData , setOrderTrackingDetailsData] = useState([]);
 
+   
     var dateFrom: any , dateTo: any;
     function setDateFrom(a:any){
       var formatedDate = a.slice(0,a.indexOf('T')) ;
