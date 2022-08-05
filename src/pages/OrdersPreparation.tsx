@@ -5,6 +5,8 @@ import { Chart as ChartJS, registerables } from 'chart.js';
 import { Bar , Line } from "react-chartjs-2";
 import DropdownMenuCustomers, { exportedCustomerValue } from '../components/DropdownMenuCustomers';
 
+import classes from './chart.module.css';
+
 ChartJS.register(...registerables);
 
 
@@ -14,20 +16,51 @@ const selectedData:any = jsonData[3];
 const couleur:string =  selectedData[14];
 const num1:number = selectedData[7] , num2:number = selectedData[8] , num3:number = selectedData[9] , num4:number = selectedData[10], num5:number = selectedData[11] , num6:number = selectedData[12], num7:number = selectedData[13]
 
-const data = {
-  labels: ['Janvier' , 'fevrier' , 'mars' , 'avril' , 'mai','juin','juillet','aout'],
+const dataBar1 = {
+  labels: ['avant 13h' , 'apres 13h'],
   datasets : [
     {
-      label: 'My first Data Set',
+      label: 'Imprimées et envoyées le jour même',
       backgroundColor: 'rgba(255,99,132,0.2)',
       borderColor: 'rgba(255,99,132,1)',
       borderWidth: 1 ,
       hoverBackgroundColor : 'rgba(255,99,132,0.4)',
       hoverBorderColor : 'rgba(255,99,132,1)',
-      data: [65,59,80,81,56,55,41,10]
+      data: [65,59]
     }
   ]
 };
+
+const dataBar2 = {
+  labels: ['avant 13h' , 'apres 13h'],
+  datasets : [
+    {
+      label: 'Imprimées et envoyées le lendemain',
+      backgroundColor: '	rgba(255, 215, 0,0.2)',
+      borderColor: '	rgba(255, 215, 0,1)',
+      borderWidth: 1 ,
+      hoverBackgroundColor : '	rgba(255, 215, 0,0.4)',
+      hoverBorderColor : '	rgba(255, 215, 0,1)',
+      data: [12,80]
+    }
+  ]
+};
+
+const dataBar3 = {
+  labels: [''],
+  datasets : [
+    {
+      label: 'Imprimées et envoyées à J>1',
+      backgroundColor: 'rgba(255,99,132,0.2)',
+      borderColor: 'rgba(255,99,132,1)',
+      borderWidth: 1 ,
+      hoverBackgroundColor : 'rgba(255,99,132,0.4)',
+      hoverBorderColor : 'rgba(255,99,132,1)',
+      data: [9]
+    }
+  ]
+};
+
 
 const tempData = {
   labels: ["Dimanche", "Lundi", "Mardi", "Mercredi", "jeudi", "Vendredi" , "Samedi"],
@@ -44,18 +77,6 @@ const tempData = {
       data: [0,0, 0, 0, 0, 0, 0],
       fill: false,
       borderColor: "#5c79d7" // bleu claire
-    },
-    {
-      label: "imprimées ce jour après 13H et envoyées le jour même",
-      data: [0,0, 0, 0, 0, 0, 0],
-      fill: false,
-      borderColor: "#c3975a" // jaune 
-    },
-    {
-      label: "imprimées ce jour avant 13H et envoyées le jour même",
-      data: [0,0, 0, 0, 0, 0, 0],
-      fill: false,
-      borderColor: "#3C578C" // bleu foncé
     }
   ]
 };
@@ -137,9 +158,9 @@ export const OrdersPreparation : React.FC = () => {
             ]
           };
 
-          for(let i = 0 ; i < 1000 ; i++) ;
-          
-          setLineData(finalData);
+          //for(let i = 0 ; i < 1000 ; i++) ;
+          //await console.log("");
+          await setLineData(finalData);
 
           //console.log(lineData)
 
@@ -161,8 +182,6 @@ export const OrdersPreparation : React.FC = () => {
             })
             .then(response => response.json())
             .then(recievedData => configureLineData(recievedData));
-
-           
     }
 
     return(
@@ -178,9 +197,6 @@ export const OrdersPreparation : React.FC = () => {
         <IonContent fullscreen> 
         
         <DropdownMenuCustomers />
-        
-  
-                <h1>coucou</h1>
 
             
             <IonGrid>
@@ -197,23 +213,25 @@ export const OrdersPreparation : React.FC = () => {
             </IonRow>
             </IonGrid>
 
+          <h2>Pourcentage de commandes envoyées</h2>
+          
+          <div className={classes.chart_wrapper_parent}>
+            <div  id={classes.chart_wrapper}>
 
-            <div>
-            <h2>Bar Example ( custom size )</h2>
+              <Bar data={dataBar1} /*width={80 //height={100} */options={{maintainAspectRatio:true}} />
 
-            <Bar
-                data={data}
-                width={80}
-                height={100}
-                options={{maintainAspectRatio:true}} 
-            /> 
+              <Bar data={dataBar2} /*width={80 //height={100} */options={{maintainAspectRatio:true}} /> 
+
+                <Bar data={dataBar3} /*width={80 height={100} *//> 
             
-             <Line data={lineData}  /> 
-
-           
-   
+          </div>
         </div>
-
+        
+        <h2>Détails par jour</h2>
+        <div id={classes.lineChart}> 
+            <Line  width={50} height={70} data={lineData}  /> 
+        </div>
+ 
       
         </IonContent>
       </IonPage>

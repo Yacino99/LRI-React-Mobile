@@ -1,0 +1,22 @@
+
+ @media (min-height: 680px) {
+    #chart_wrapper{
+        display: flex;
+        position: relative;
+        /*width: 400px;*/
+        width: 30%;
+       /* overflow: auto;*/
+    }
+ 
+    #lineChart{
+          width: 400px;
+        height: 400px;
+      /* padding-left: 40%; */
+     
+    }
+
+    .chart_wrapper_parent{
+        width: 100%;
+    }
+
+}
