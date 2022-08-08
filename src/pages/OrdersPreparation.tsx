@@ -9,13 +9,6 @@ import classes from './chart.module.css';
 
 ChartJS.register(...registerables);
 
-
-const jsonData = [[0,0.7,2.14,0.02,0,0.06,0,100,99.30245535714286,98.48400297619048,99.98139880952381,100,99.96279761904762,100,"#b54138"],[0,15.43,0.01,0.26,0.79,0.06,0.27,100,84.5703125,99.9906994047619,99.78608630952381,99.46056547619048,99.96279761904762,99.97209821428571,"#5c79d7"],[0,14.88,52.34,42.41,45.46,48.21,0,100,85.11904761904762,62.83482142857143,64.89025297619048,69.00111607142857,68.10825892857143,100,"#c3975a"],[0,68.86,45.49,57.23,53.73,51.29,99.64,100,31.13839285714286,67.69903273809524,52.622767857142854,63.364955357142854,66.07142857142857,89.76934523809524,"#3C578C"]];
-const selectedData:any = jsonData[3];
-
-const couleur:string =  selectedData[14];
-const num1:number = selectedData[7] , num2:number = selectedData[8] , num3:number = selectedData[9] , num4:number = selectedData[10], num5:number = selectedData[11] , num6:number = selectedData[12], num7:number = selectedData[13]
-
 const dataBar1 = {
   labels: ['avant 13h' , 'apres 13h'],
   datasets : [

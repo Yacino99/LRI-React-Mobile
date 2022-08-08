@@ -2191,8 +2191,8 @@ const OrdersTrackingException: React.FC<Props> = ({data}) => {
         //console.log( Object.values(dataAsArray) , "coucou" )
 
                 
-        data.length != 0 ?
-         Object.entries(data).map( (entry:any) => {
+        //.length != 0 ?
+         Object.entries(/*data*/localData).map( (entry:any) => { // a changer
           const [key, value] = entry;
           //console.log(value,"toto")
           return (
@@ -2203,7 +2203,7 @@ const OrdersTrackingException: React.FC<Props> = ({data}) => {
             </>
           )
         }) //:  <IonLoading isOpen={true} ></IonLoading> 
-           : <p>loading ...</p>
+          // : <p>loading ...</p>
    
       }
 

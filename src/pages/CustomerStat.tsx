@@ -192,7 +192,7 @@ const CustomerStat: React.FC = () => {
             )
             : (  
                //<CustomerStatActivities data={"test"} /> 
-               selected == "1" ?"" : selected == "2" ? <CustomerStatActivities data={"test"} /> : selected == "3" ? "" : "" 
+               selected == "1" ?"" : selected == "2" ? <CustomerStatActivities data={customerActivitiesData} /> : selected == "3" ? "" : "" 
               )
         }
 

@@ -281,11 +281,11 @@ const OrderTrackingAverage: React.FC<Props> = ({data,details})  => {
           
           {
            
-           data.length !=0 ?
-            data.map( (item:any , key:any) => {
+           localData.length !=0 ? // change to data
+           localData.map( (item:any , key:any) => {
               return(
               <>
-                <MyAccordion key={key} transporteur={item.carrier_name} delai={item.averageDelivery} details={details} />
+                <MyAccordion key={key} transporteur={item.carrier_name} delai={item.averageDelivery} details={/*details*/localDetails} />
               </>
               )
             } ) : <p>loading ...</p>

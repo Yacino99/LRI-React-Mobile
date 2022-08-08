@@ -1143,8 +1143,8 @@ return (
         <TableWrapper title={''} >
         <IonGrid>
         {
-           data.length != 0 ? 
-           Object.values(data).map( (objects:any , key : any) => {
+           //data.length != 0 ? 
+           Object.values(/*data*/localData).map( (objects:any , key : any) => {
                
                 return (
                         <div>
@@ -1199,7 +1199,7 @@ return (
                         
                     )
             }) //:   <IonLoading isOpen={true} ></IonLoading>  
-                : <p>loading ...</p>
+               // : <p>loading ...</p>
                
        
         }

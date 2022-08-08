@@ -6,7 +6,7 @@ import { TableWrapper } from "../../components/TableWrapper";
 import classes from './../tables.module.css';
 
 interface Props{
-    data:any;
+    data:Array<any>;
   }
   
   
