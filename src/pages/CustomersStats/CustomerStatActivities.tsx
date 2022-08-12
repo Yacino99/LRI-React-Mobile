@@ -1,5 +1,6 @@
 import { IonCol, IonGrid, IonRow } from "@ionic/react";
-import React from "react";
+import React, { CSSProperties } from "react";
+import RingLoader from "react-spinners/RingLoader";
 
 import {CustomerStatActivites} from '../../components/data'
 import { TableWrapper } from "../../components/TableWrapper";
@@ -9,6 +10,11 @@ interface Props{
     data:Array<any>;
   }
   
+  const override: CSSProperties = {
+    display: "block",
+    margin: "0 auto",
+    borderColor: "red",
+  };
   
 
  const CustomerStatActivities : React.FC<Props> = ({data}) => {  
@@ -28,9 +34,11 @@ interface Props{
                         <IonCol> <div > Temps Total </div> </IonCol>
                     </IonRow> 
                 
-                   
-
                         {
+                            data.length == 0 ?  <RingLoader color="#C3975A" loading={true} cssOverride={override} size={150} /> :
+                        
+
+                        
                             data.map( (object:any,key:any) => {
                                return (
                                 <>

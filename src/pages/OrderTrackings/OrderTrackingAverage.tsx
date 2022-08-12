@@ -1,5 +1,6 @@
 import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonButtons, IonSpinner, IonLoading, IonList, IonItem, IonLabel, IonGrid, IonCol, IonRow} from '@ionic/react';
-import React from 'react';
+import React, { CSSProperties } from 'react';
+import RingLoader from 'react-spinners/RingLoader';
 import MyAccordion from '../../components/MyAccordion';
 import classes from './../tables.module.css';
 
@@ -257,7 +258,12 @@ interface Props{
   details:any;
 }
 
-
+const override: CSSProperties = {
+    display: "block",
+    margin: "0 auto",
+    borderColor: "red",
+  };
+  
 
 
 const OrderTrackingAverage: React.FC<Props> = ({data,details})  => {
@@ -288,7 +294,7 @@ const OrderTrackingAverage: React.FC<Props> = ({data,details})  => {
                 <MyAccordion key={key} transporteur={item.carrier_name} delai={item.averageDelivery} details={/*details*/localDetails} />
               </>
               )
-            } ) : <p>loading ...</p>
+            } ) : <RingLoader color="#C3975A" loading={true} cssOverride={override} size={150} /> 
           }
          
 
